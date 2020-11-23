@@ -22,6 +22,7 @@ depends=(
   python-certifi
   python-ciso8601
   python-cryptography
+  python-httpx
   python-jinja
   python-pillow
   python-pip
