@@ -1,4 +1,4 @@
-From 1dc159a659b05edb59ed5640855ed929570bbedc Mon Sep 17 00:00:00 2001
+From 0ea349d1db26d107b579ed3d1f0198ca1c1c986a Mon Sep 17 00:00:00 2001
 From: Atom Long <atom.long@hotmail.com>
 Date: Mon, 23 Nov 2020 18:12:43 +0800
 Subject: [PATCH] bump astral to 2.2
@@ -13,7 +13,7 @@ Subject: [PATCH] bump astral to 2.2
  6 files changed, 46 insertions(+), 34 deletions(-)
 
 diff --git a/homeassistant/components/moon/sensor.py b/homeassistant/components/moon/sensor.py
-index f7914177f8..9b29b071ee 100644
+index 9e0f8ef51d..0ffa23a841 100644
 --- a/homeassistant/components/moon/sensor.py
 +++ b/homeassistant/components/moon/sensor.py
 @@ -1,5 +1,5 @@
@@ -23,11 +23,11 @@ index f7914177f8..9b29b071ee 100644
  import voluptuous as vol
  
  from homeassistant.components.sensor import PLATFORM_SCHEMA
-@@ -87,4 +87,4 @@ class MoonSensor(Entity):
+@@ -88,4 +88,4 @@ class MoonSensor(Entity):
      async def async_update(self):
          """Get the time and updates the states."""
          today = dt_util.as_local(dt_util.utcnow()).date()
--        self._state = Astral().moon_phase(today)
+-        self._state = self._astral.moon_phase(today)
 +        self._state = moon.phase(today)
 diff --git a/homeassistant/components/sun/__init__.py b/homeassistant/components/sun/__init__.py
 index 2d921da4a4..ec8f4b325a 100644
@@ -238,7 +238,7 @@ index 818010c341..ae341e07e1 100644
          return None
  
 diff --git a/homeassistant/package_constraints.txt b/homeassistant/package_constraints.txt
-index 9465ff1512..02044e5d14 100644
+index 3241cfb939..c979e89b8c 100644
 --- a/homeassistant/package_constraints.txt
 +++ b/homeassistant/package_constraints.txt
 @@ -2,7 +2,7 @@ PyJWT==1.7.1
@@ -251,7 +251,7 @@ index 9465ff1512..02044e5d14 100644
  attrs==19.3.0
  bcrypt==3.1.7
 diff --git a/requirements.txt b/requirements.txt
-index 3a376b6e7c..c9f74fc492 100644
+index d566cb738a..28e7c00d45 100644
 --- a/requirements.txt
 +++ b/requirements.txt
 @@ -2,7 +2,7 @@
@@ -264,7 +264,7 @@ index 3a376b6e7c..c9f74fc492 100644
  attrs==19.3.0
  bcrypt==3.1.7
 diff --git a/setup.py b/setup.py
-index 885d6e192d..865fddff87 100755
+index 82d6efacb1..716673b3f0 100755
 --- a/setup.py
 +++ b/setup.py
 @@ -33,7 +33,7 @@ PACKAGES = find_packages(exclude=["tests", "tests.*"])
@@ -277,5 +277,5 @@ index 885d6e192d..865fddff87 100755
      "attrs==19.3.0",
      "bcrypt==3.1.7",
 -- 
-2.29.2.windows.2
+2.30.0.windows.1
 
