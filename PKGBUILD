@@ -51,11 +51,9 @@ _tag=8bdcdfb8e67d36b17b1839fa0298f3b874ef375d
 source=(
   git+https://github.com/home-assistant/home-assistant.git#tag=${_tag}
   home-assistant.service
-  home-assistant-astral2.2.patch
 )
 b2sums=('SKIP'
-        '0df7bbfdac09e37294ac27567e677855c72d13be3aefbd23e0a8f101cf2148302affbe9b6b586b893f77fc990f665d7b95f4916583680c06abd8f74b5cdf3da9'
-        '999b73d9f2744d537ff7356571220ba0f115e2b76c18c4befb0149bc14a1b932800c8416279d13da0c76f93f00179fec699d63a7bcac3d24472ec29853707ecd')
+        '0df7bbfdac09e37294ac27567e677855c72d13be3aefbd23e0a8f101cf2148302affbe9b6b586b893f77fc990f665d7b95f4916583680c06abd8f74b5cdf3da9')
 
 pkgver() {
   cd home-assistant
@@ -65,8 +63,6 @@ pkgver() {
 
 prepare() {
   cd home-assistant
-
-  patch -Np1 -i ../home-assistant-astral2.2.patch
 
   # lift hard dep constraints, we'll deal with breaking changes ourselves
   sed 's/==/>=/g' -i setup.py homeassistant/package_constraints.txt
