@@ -34,7 +34,7 @@ depends=(
   python-requests
   python-ruamel-yaml
   python-slugify
-  python-sqlalchemy1.3
+  python-sqlalchemy
   python-voluptuous
   python-voluptuous-serialize
   python-yaml
