@@ -18,12 +18,15 @@ depends=(
   python-astral
   python-async-timeout
   python-attrs
+  python-awesomeversion
   python-bcrypt
   python-certifi
   python-ciso8601
   python-cryptography
+  python-defusedxml
   python-httpx
   python-jinja
+  python-mutagen
   python-pillow
   python-pip
   python-pyjwt
@@ -31,11 +34,12 @@ depends=(
   python-requests
   python-ruamel-yaml
   python-slugify
-  python-sqlalchemy
+  python-sqlalchemy1.3
   python-voluptuous
   python-voluptuous-serialize
   python-yaml
   python-yarl
+  python-zeroconf
 )
 makedepends=(
   git
@@ -53,32 +57,29 @@ source=(
   home-assistant.service
 )
 b2sums=('SKIP'
-        '0df7bbfdac09e37294ac27567e677855c72d13be3aefbd23e0a8f101cf2148302affbe9b6b586b893f77fc990f665d7b95f4916583680c06abd8f74b5cdf3da9')
+        'c56b88e4d8d6d10ea132d22916468109ffaa83c1176a75e0c0ead16b261c34fe4c279cec6dca415b1addfcd873ad35b294f60a3e1ba62cc917a9dbb73cce47d4')
 
 pkgver() {
   cd home-assistant
-
   git describe --tags
 }
 
 prepare() {
   cd home-assistant
-
   # lift hard dep constraints, we'll deal with breaking changes ourselves
-  sed 's/==/>=/g' -i setup.py homeassistant/package_constraints.txt
+  sed 's/==/>=/g' -i requirements.txt setup.py homeassistant/package_constraints.txt
+  # allow pip >= 20.3 to be used
+  sed 's/,<20.3//g' -i requirements.txt setup.py homeassistant/package_constraints.txt
 }
 
 build() {
   cd home-assistant
-
   python setup.py build
 }
 
 package() {
   cd home-assistant
-
   python setup.py install --root="${pkgdir}" --prefix=/usr --optimize=1 --skip-build
-
   install -Dm 644 ../home-assistant.service -t "${pkgdir}"/usr/lib/systemd/system/
 }
 
