@@ -1,6 +1,6 @@
 pkgbase = home-assistant
 	pkgdesc = Open source home automation that puts local control and privacy first
-	pkgver = 2021.8.5
+	pkgver = 2021.9.3
 	pkgrel = 1
 	url = https://home-assistant.io/
 	arch = any
@@ -39,7 +39,7 @@ pkgbase = home-assistant
 	optdepends = openzwave: Z-Wave integration
 	optdepends = python-dtlssocket: Ikea Tradfri integration
 	optdepends = python-lxml: Meteo France integration
-	source = git+https://github.com/home-assistant/home-assistant.git#tag=a21e3aed77fd5d1781101e81ad543271c7173ee9
+	source = git+https://github.com/home-assistant/home-assistant.git#tag=df9a899bbd2af58d9c7b9cad4b3302dea27217fd
 	source = home-assistant.service
 	b2sums = SKIP
 	b2sums = c56b88e4d8d6d10ea132d22916468109ffaa83c1176a75e0c0ead16b261c34fe4c279cec6dca415b1addfcd873ad35b294f60a3e1ba62cc917a9dbb73cce47d4
